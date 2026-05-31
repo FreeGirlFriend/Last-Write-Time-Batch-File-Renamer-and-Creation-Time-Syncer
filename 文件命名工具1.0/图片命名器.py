@@ -87,8 +87,8 @@ def get_exif_datetime_original(filepath: str):
         return None  # 非图片文件直接跳过，避免 PIL 报错
     try:
         img = Image.open(filepath)
-        exif_data = img._getexif()
-        if exif_data is None:
+        exif_data = img.getexif()
+        if not exif_data:
             return None
         datetime_str = None
         subsec_str = None
